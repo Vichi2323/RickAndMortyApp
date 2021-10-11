@@ -1,0 +1,25 @@
+.nav-container {
+    margin-left: 25%;
+    margin-right: 25%;
+    width: 50%;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+
+}
+
+.link-container {
+
+}
+
+.nav-link {
+    font-family: "Gluten";
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--clr-dark-blue);
+    text-decoration: none;
+    
+
+}

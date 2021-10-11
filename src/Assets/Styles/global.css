@@ -1,6 +1,10 @@
 :root {
+ --clr-black-decor: #000;   
  --clr-background-color: #1b6f20;
  --clr-dark-blue: #53abee; 
+ --clr-dark-orange: ;
+ --clr-light-yellow: #fff874;
+ --clr-light-pink: #f675da;
 }
 * {
 padding: 0;
