@@ -1,5 +1,7 @@
 import React,  { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { getData } from '../../Servises/RestAPI';
+import { ROUTES } from '../../Constants/Routes' 
 
 import './characters.css'
 
@@ -13,22 +15,46 @@ const Characters = () => {
     const [number, setNumber] = useState(1)
     const [decrementDisabled, setDecrementDisabled] = useState(false)
     const [incrementDisabled, setIncrementDisabled] = useState(false)
+    const history = useHistory(); 
 
 
     const increment = () => {
         if(number === info.pages){
-        alert("no more pages")
-    }else {
-        setNumber(number + 1)
-    }
+            alert("No more pages");
+        }else {
+            setNumber(number + 1);
+        };
     };
 
 
     const decrement = () => {
         if(number <= 1){
-           alert("gggg")
+           alert('No previous');
         }else {
-            setNumber(number - 1)
+            setNumber(number - 1);
+        };
+    };
+
+    const decrementErrorBtn = () => {
+        if(decrementDisabled === true){
+            return(<div className="error-btn" disabled={decrementDisabled} onClick={decrement}>previous page with characters</div>
+            )
+        }else{
+            return (
+                <div className="btn" disabled={decrementDisabled} onClick={decrement}>previous page with characters</div>
+            )
+        }
+    }
+
+    const incrementErrorBtn = () => {
+        if(incrementDisabled === true) {
+            return(<div className="error-btn" disabled={incrementDisabled} onClick={increment}>next page with characters</div>
+            )
+        } else {
+            return(
+                <div className="btn" disabled={incrementDisabled} onClick={increment}>next page with characters</div>
+
+            )
         }
     }
 
@@ -52,17 +78,23 @@ const Characters = () => {
 
     },[number]);
 
-    console.log(number)
+   
 
-
-
+    const goToCharacter = (character) => {
+        history.push({
+            pathname: ROUTES.CHARACTER,
+            state: {
+                id:  character.id
+            }
+        })
+    };
     return (
         <div className="paige-container">
             <h1 className="page-header">Characters</h1>
             <div className="cards-container">
             {characters ? characters.map((character) => {
                 return (
-                    <div className="card-container" key={character.id}>
+                    <div onClick={() => goToCharacter(character)} className="card-container" key={character.id}>
                         <h1 className="card-name">{character.name}</h1>
                         <img className="card-img" src={character.image} />
                         <div className="status-species-container">
@@ -73,8 +105,10 @@ const Characters = () => {
                 )
             }): null}
             </div>
-            <button disabled={decrementDisabled} onClick={decrement}>previous page with characters</button>
-            <button disabled={incrementDisabled} onClick={increment}>next page with characters</button>
+            <div className="btn-container">   
+                {decrementErrorBtn()}
+                {incrementErrorBtn()}      
+            </div>
         </div>
     );
 };

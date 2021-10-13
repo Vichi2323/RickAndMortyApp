@@ -70,7 +70,36 @@ padding: 0.5rem;
 .card-species {
     font-family: "Gluten";
     color: var(--clr-light-pink);
-    font-weight: 200;
+    font-weight: 300;
     padding: 0.5rem;
  
+}
+
+.btn-container{
+ display: flex;
+ flex-direction: row;
+ justify-content: space-between;
+ font-family: "Gluten";
+ font-weight: 300;
+ font-size: 1.5rem;
+ color: var( --clr-dark-blue);
+ margin-bottom: 2rem;
+
+
+ }
+
+.btn-container:hover {
+    cursor: pointer;
+}
+
+.btn {
+    border: 2px solid var(--clr-black-decor);
+    padding: 0.3rem;
+    border-radius: 30px;
+    background-color: var(--clr-light-yellow)
+}
+
+.error-btn {
+    padding: 0.3rem;
+    border-radius: 30px;
 }

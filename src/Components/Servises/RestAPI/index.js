@@ -7,4 +7,14 @@ export const getData = (cat, number) => {
     .then(res => {
         return res.json()
     })
+};
+
+export const getCharacter = (cat, id) => {
+    return fetch(`${BASE_URL}/${cat}/${id}`,{
+        method: "GET"
+    })
+    .then(res => {
+        return res.json()
+    });
 }
+
