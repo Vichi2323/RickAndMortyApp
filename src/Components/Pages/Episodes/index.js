@@ -26,7 +26,7 @@ const Episodes = () => {
                 return(
                 <div className="episode-container" key={episode.id}>         
                     <p className="dynamic-value">{episode.id}) </p>
-                    <p className="static-value">          Episode name: </p><p className="dynamic-value"> {episode.name}</p>
+                    <p className="static-value"> Episode name: </p><p className="dynamic-value"> {episode.name}</p>
                     <p className="static-value"> Air date: </p><p className="dynamic-value"> {episode.air_date}</p>
                     <span className="info-span"> info </span>
                 </div>)
