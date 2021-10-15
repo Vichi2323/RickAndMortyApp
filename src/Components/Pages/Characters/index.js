@@ -89,7 +89,7 @@ const Characters = () => {
         })
     };
     return (
-        <div className="paige-container">
+        <div className="page-container">
             <h1 className="page-header">Characters</h1>
             <div className="cards-container">
             {characters ? characters.map((character) => {
