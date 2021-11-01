@@ -1,0 +1,26 @@
+.whole-map-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly
+}
+
+
+
+.page-container {
+ 
+    
+    }
+
+
+.location-container {
+  
+    display: flex;
+    flex-direction: column;
+    width: 24%;
+    padding: 2rem;
+    
+  
+    list-style: none;
+ 
+}

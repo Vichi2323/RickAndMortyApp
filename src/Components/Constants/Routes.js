@@ -3,6 +3,10 @@ export const ROUTES = {
     CHARACTERS: "/characters",
     EPISODES: "/episodes",
     LOCATIONS: "/locations",
-    CHARACTER: '/character'
-    
+    CHARACTER: '/character',
+    LOCATION: '/location',
+    EPISODE: "/episode",
+    ID: '/:id',
+    404: '/404'
+
 };
