@@ -23,6 +23,7 @@ margin-right: 20%;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
+    width: 100%;
 }
 
 .card-container {
@@ -36,7 +37,7 @@ margin-right: 20%;
 
 
     
-.card-name {
+.card-title {
     font-family: "Gluten";
     font-size: 2rem;
     font-weight: 300;
@@ -48,7 +49,7 @@ margin-right: 20%;
      1px 1px 0 var(--clr-black-decor);
 }
 
-.card-name:hover {
+.card-title:hover {
     cursor: pointer;
     opacity: 0.5;
 }
@@ -114,4 +115,30 @@ padding: 0.5rem;
 .error-btn {
     padding: 0.3rem;
     border-radius: 30px;
+}
+
+
+.input-radio-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 3rem;
+    justify-content: space-around;
+}
+
+.characters-input {
+    font-family: "Gluten";
+    color: var( --clr-light-pink);
+    letter-spacing: 4px;
+    background-color: var(--clr-black-decor);
+    border-radius: 15px;
+    height: 1rem;
+    width: 15rem;
+    text-align: center;
+}
+
+.characters-input:focus {
+    outline: none !important;
+    border: 1px solid var(--clr-light-pink)
+
 }

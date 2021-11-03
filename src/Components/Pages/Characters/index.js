@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 import { useHistory, useParams } from 'react-router-dom';
-import { getData } from '../../Servises/RestAPI';
-import { ROUTES } from '../../Constants/Routes'
+import { getData, getCharactersByName } from '../../Servises/RestAPI';
+import { ROUTES } from '../../Constants/Routes';
+import { RadioGroup } from '../../UI/Radio';
+import Input from '../../UI/Input';
 
 import './characters.css'
 
@@ -12,11 +14,24 @@ const Characters = () => {
     const [info, setInfo] = useState({
         pages: 5
     });
+    const [name, setName] = useState(undefined)
     const cat = "character";
     const [number, setNumber] = useState(1);
     const [decrementDisabled, setDecrementDisabled] = useState(false);
     const [incrementDisabled, setIncrementDisabled] = useState(false);
     const history = useHistory();
+    const [radio, setRadio] = useState("alive");
+    const [charactersByName, setCharactersByName] = useState()
+    const [charactersByNameInfo, setCharactersByNameInfo] = useState({
+        pages: 2
+    })
+
+
+    const status = [
+        { value: 'alive', label: 'Alive' },
+        { value: "dead", label: 'Dead' },
+        { value: "unknown", label: 'Unknown' }
+    ];
 
     console.log(characters)
 
@@ -71,14 +86,17 @@ const Characters = () => {
     }
 
     useEffect(() => {
-        getData(cat, number)
-            .then(data => {
-                setCharacters(data.results)
-                setInfo(data.info)
-            })
+        if (name === undefined) {
+            getData(cat, number)
+                .then(data => {
+                    setCharacters(data.results)
+                    setInfo(data.info)
+                })
+        } else {
+
+        }
         if (number <= 1) {
             setDecrementDisabled(true)
-
         } else {
             setDecrementDisabled(false)
         }
@@ -87,22 +105,65 @@ const Characters = () => {
         } else {
             setIncrementDisabled(false)
         }
+        if (name === "" || name === undefined) {
+            setName(undefined)
+        }
+        getCharactersByName(cat, number, name, radio)
+            .then(data => {
+                setCharactersByName(data.results)
+                // setCharactersByNameInfo(data.info)
+                if (data.info != undefined) {
+                    setInfo(data.info)
+                } else {
+                    console.log("this is from else")
+                }
+            })
+    }, [number, name, radio]);
 
-    }, [number]);
+
+
 
     const goToCharacter = (character) => {
         history.push(`${ROUTES.CHARACTER}/${character.id}`)
     }
 
+    const handleChange = (e) => {
+        setName(e.target.value)
+    };
+
+    const resetNameValue = () => {
+        setName("")
+        setNumber(1)
+    };
+
 
     return (
         <div className="page-container">
+            <div className="input-radio-container">
+            <Input
+                className="characters-input"
+                type="text"
+                name={name}
+                value={name}
+                onChange={handleChange}
+                onFocus={resetNameValue}
+            />
+            <RadioGroup
+                options={status}
+                name='status'
+                disabled={false}
+                value={radio}
+                onChange={setRadio}
+            />
+            </div>
             <h1 className="page-header">Characters</h1>
             <div className="cards-container">
-                {characters ? characters.map((character) => {
+                {charactersByName ? charactersByName.map((character) => {
                     return (
-                        <div onClick={() => goToCharacter(character)} className="card-container" key={character.id}>
-                            <h1 className="card-name">{character.name}</h1>
+                        <div onClick={() => {
+                            goToCharacter(character)
+                        }} className="card-container" key={character.id}>
+                            <h1 className="card-title" >{character.name}</h1>
                             <img className="card-img" src={character.image} />
                             <div className="status-species-container">
                                 <span className="card-status">{character.status}</span>
@@ -110,7 +171,21 @@ const Characters = () => {
                             </div>
                         </div>
                     )
-                }) : null}
+                }) :
+                    characters ? characters.map((character) => {
+                        return (
+                            <div onClick={() => {
+                                goToCharacter(character)
+                            }} className="card-container" key={character.id}>
+                                <h1 className="card-title" >{character.name}</h1>
+                                <img className="card-img" src={character.image} />
+                                <div className="status-species-container">
+                                    <span className="card-status">{character.status}</span>
+                                    <span className="card-species">{character.species}</span>
+                                </div>
+                            </div>
+                        );
+                    }) : null}
             </div>
             <div className="btn-container">
                 {decrementErrorBtn()}

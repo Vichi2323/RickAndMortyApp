@@ -14,6 +14,7 @@ import Nav from './Nav';
 import '../Assets/Styles/App.css';
 import '../Assets/Styles/global.css';
 import NotFound from './Pages/404';
+import Homepage from './Pages/HomePage';
 
 function App() {
 	return (
@@ -25,7 +26,9 @@ function App() {
 					</Link>
 				</header>
 				<Nav />
+
 				<Switch>
+					<Route path={ROUTES.HOME} component={Homepage} />
 					<Route path={ROUTES.CHARACTERS} component={Characters} />
 					<Route path={ROUTES.EPISODES} component={Episodes} />
 					<Route path={`${ROUTES.EPISODE}${ROUTES.ID}`} component={Episode} />

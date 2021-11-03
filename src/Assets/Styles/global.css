@@ -2,7 +2,7 @@
  --clr-black-decor: #000;   
  --clr-background-color: #1b6f20;
  --clr-dark-blue: #53abee; 
- --clr-dark-orange: ;
+ --clr-dark-orange: #f9bf1e;
  --clr-light-yellow: #fff874;
  --clr-light-pink:  #f675da;
 }
@@ -15,5 +15,6 @@ body {
     width: 100%;
     height: 100%;
     background-color: var(--clr-background-color) ;
+  
 }
 
