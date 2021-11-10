@@ -38,10 +38,18 @@ const Characters = () => {
     const increment = () => {
         if (number === info.pages) {
             Swal.fire({
-                title: 'Error!',
-                text: 'No more pages',
+                title: "<h5 style='color:#f9bf1e', >" + "Error" + "</h5>",
+                text: 'No previous pages',
                 icon: 'error',
-                confirmButtonText: 'Cool'
+                confirmButtonText: 'Cool',
+                confirmButtonText: "Got it",
+                iconColor: "#f675da",
+                customClass: {
+                    text: "swal-text-color",
+                    confirmButton: "error-btn-swal"
+                },
+                buttonsStyling: false,
+                confirmButtonAriaLabel: "aria-label"
             })
         } else {
             setNumber(number + 1);
@@ -52,10 +60,18 @@ const Characters = () => {
     const decrement = () => {
         if (number <= 1) {
             Swal.fire({
-                title: 'Error!',
+                title: "<h5 style='color:#f9bf1e', >" + "Error" + "</h5>",
                 text: 'No previous pages',
                 icon: 'error',
-                confirmButtonText: 'Cool'
+                confirmButtonText: 'Cool',
+                confirmButtonText: "Got it",
+                iconColor: "#f675da",
+                customClass: {
+                    text: "swal-text-color",
+                    confirmButton: "error-btn-swal"
+                },
+                buttonsStyling: false,
+                confirmButtonAriaLabel: "aria-label"
             })
         } else {
             setNumber(number - 1);
@@ -147,6 +163,10 @@ const Characters = () => {
                 value={name}
                 onChange={handleChange}
                 onFocus={resetNameValue}
+                children="Search characters"
+                placeholder={"Enter a name"}
+                labelClassname="label"
+                inputContainerClassname="input-container"
             />
             <RadioGroup
                 options={status}

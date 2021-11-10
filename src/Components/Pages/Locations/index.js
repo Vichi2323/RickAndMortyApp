@@ -21,10 +21,18 @@ const Locations = () => {
     const increment = () => {
         if (info && info.pages && number === info.pages) {
             Swal.fire({
-                title: 'Error!',
+                title: "<h5 style='color:#f9bf1e', >" + "Error" + "</h5>",
                 text: 'No previous pages',
                 icon: 'error',
-                confirmButtonText: 'Cool'
+                confirmButtonText: 'Cool',
+                confirmButtonText: "Got it",
+                iconColor: "#f675da",
+                customClass: {
+                    text: "swal-text-color",
+                    confirmButton: "error-btn-swal"
+                },
+                buttonsStyling: false,
+                confirmButtonAriaLabel: "aria-label"
             })
         } else {
             setNumber(number + 1)
@@ -34,10 +42,18 @@ const Locations = () => {
     const decrement = () => {
         if (number <= 1) {
             Swal.fire({
-                title: 'Error!',
+                title: "<h5 style='color:#f9bf1e', >" + "Error" + "</h5>",
                 text: 'No previous pages',
                 icon: 'error',
-                confirmButtonText: 'Cool'
+                confirmButtonText: 'Cool',
+                confirmButtonText: "Got it",
+                iconColor: "#f675da",
+                customClass: {
+                    text: "swal-text-color",
+                    confirmButton: "error-btn-swal"
+                },
+                buttonsStyling: false,
+                confirmButtonAriaLabel: "aria-label"
             })
         } else {
             setNumber(number - 1)
@@ -94,13 +110,13 @@ const Locations = () => {
             <div className="whole-map-container">
                 {locations ? locations.map((location) => {
                     return (
-                        <ul className="location-container" onClick={() => goToLocation(location)} key={location.id}>
 
-                            <li className="static-value"> Name: {location.name}</li>
-                            <li className="static-value">Type: {location.type}</li>
-                            <li className="static-value">Dimension: {location.dimension}</li>
-                            <li className="dynamic-value">Residents</li>
-                        </ul>
+                        <div className="location-container" onClick={() => goToLocation(location)} key={location.id}>
+
+                            <div className="static-value-locations"><p className="static-paragraph">NAME: </p><p className="paragraph"> {location.name}</p></div>
+                            <div className="static-value-locations"><p className="static-paragraph">TYPE: </p><p className="paragraph">  {location.type}</p></div>
+                            <div className="static-value-locations"><p className="static-paragraph">DIMENSION: </p> <p className="paragraph">{location.dimension}</p></div>
+                        </div>
                     )
 
                 }) : null}

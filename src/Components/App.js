@@ -16,6 +16,7 @@ import '../Assets/Styles/global.css';
 import NotFound from './Pages/404';
 import Homepage from './Pages/HomePage';
 
+
 function App() {
 	return (
 		<BrowserRouter>
@@ -28,7 +29,7 @@ function App() {
 				<Nav />
 
 				<Switch>
-					<Route path={ROUTES.HOME} component={Homepage} />
+					<Route exact path={ROUTES.HOME} component={Homepage} />
 					<Route path={ROUTES.CHARACTERS} component={Characters} />
 					<Route path={ROUTES.EPISODES} component={Episodes} />
 					<Route path={`${ROUTES.EPISODE}${ROUTES.ID}`} component={Episode} />

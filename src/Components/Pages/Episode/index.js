@@ -2,6 +2,7 @@ import { ROUTES } from '../../Constants/Routes';
 import React, { useEffect, useState } from 'react';
 import { useParams, useHistory, useLocation } from 'react-router-dom';
 import { getCharacter, getAllInfo } from '../../Servises/RestAPI';
+import './episode.css'
 
 
 
@@ -40,9 +41,9 @@ const Episode = () => {
     return (
         <>
         {episode &&
-        <div>
-            <h1>{episode.name}</h1>
-            <h3>{ episode.air_date}</h3>
+        <div className="episode-page-container">
+            <h1 className="static-value">{episode.name}</h1>
+            <h3 className="static-value">{ episode.air_date}</h3>
         </div>
         }
         </>

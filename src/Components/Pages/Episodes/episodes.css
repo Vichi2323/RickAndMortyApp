@@ -40,3 +40,7 @@
     -1px 1px 0 var(--clr-black-decor),
      1px 1px 0 var(--clr-black-decor);
 }
+
+.info-span:hover {
+    cursor: pointer;
+}

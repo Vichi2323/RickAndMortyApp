@@ -1,8 +1,10 @@
 .whole-map-container {
+    
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly
+    
 }
 
 
@@ -14,13 +16,43 @@
 
 
 .location-container {
-  
+    
+ 
     display: flex;
     flex-direction: column;
-    width: 24%;
-    padding: 2rem;
-    
-  
+    width: 33%;
+    padding: 8rem  0rem ;
     list-style: none;
+    justify-content: space-between;
+  
+    
+
  
+}
+
+.static-value-locations {
+    display: flex;
+    flex-direction: column;
+    font-family: "Gluten";
+    font-size: 1.5rem;
+    font-weight: 200;
+    color: var(--clr-light-pink);
+    text-shadow: 
+    -1px -1px 0 var(--clr-black-decor),  
+    1px -1px 0 var(--clr-black-decor),
+    -1px 1px 0 var(--clr-black-decor),
+     1px 1px 0 var(--clr-black-decor);
+     justify-content: space-around;
+}
+
+.static-paragraph {
+
+text-align: center;
+color: var(--clr-light-yellow);
+   
+}
+
+.paragraph {
+    display: inline;
+   text-align: center;
 }

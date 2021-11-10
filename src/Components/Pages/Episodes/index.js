@@ -23,10 +23,18 @@ const Episodes = () => {
     const increment = () => {
         if (number === info.pages) {
             Swal.fire({
-                title: 'Error!',
+                title: "<h5 style='color:#f9bf1e', >" + "Error" + "</h5>",
                 text: 'No previous pages',
                 icon: 'error',
-                confirmButtonText: 'Cool'
+                confirmButtonText: 'Cool',
+                confirmButtonText: "Got it",
+                iconColor: "#f675da",
+                customClass: {
+                    text: "swal-text-color",
+                    confirmButton: "error-btn-swal"
+                },
+                buttonsStyling: false,
+                confirmButtonAriaLabel: "aria-label"
             })
         } else {
             setNumber(number + 1)
@@ -38,10 +46,18 @@ const Episodes = () => {
     const decrement = () => {
         if (number <= 1) {
             Swal.fire({
-                title: 'Error!',
+                title: "<h5 style='color:#f9bf1e', >" + "Error" + "</h5>",
                 text: 'No previous pages',
                 icon: 'error',
-                confirmButtonText: 'Cool'
+                confirmButtonText: 'Cool',
+                confirmButtonText: "Got it",
+                iconColor: "#f675da",
+                customClass: {
+                    text: "swal-text-color",
+                    confirmButton: "error-btn-swal"
+                },
+                buttonsStyling: false,
+                confirmButtonAriaLabel: "aria-label"
             })
         } else {
             setNumber(number - 1)
@@ -53,7 +69,7 @@ const Episodes = () => {
         if (decrementButtonDisabled === true) {
             return (<div className="error-btn" disabled={decrementButtonDisabled} onClick={decrement}>previous page</div>)
         } else {
-           return (<div className="btn" disabled={decrementButtonDisabled} onClick={decrement}>previous page</div>)
+            return (<div className="btn" disabled={decrementButtonDisabled} onClick={decrement}>previous page</div>)
         }
     }
 

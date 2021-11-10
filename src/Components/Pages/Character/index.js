@@ -15,20 +15,20 @@ const Character = () => {
     const history = useHistory();
 
     console.log(id)
-    
+
 
     useEffect(() => {
         getAllInfo(cat)
-        .then(data => setCount(data.info.count))
+            .then(data => setCount(data.info.count))
         if (id < count) {
             getCharacter(cat, id)
-            .then(data => setCharacter(data))
-            .catch(err => console.log(err))
-            
+                .then(data => setCharacter(data))
+                .catch(err => console.log(err))
+
         } else {
             // history.push(ROUTES[404]);
         }
-  
+
     }, [id, history, count]);
 
     return (
@@ -39,6 +39,7 @@ const Character = () => {
                         <img className="character-img" src={character.image} alt="character image" />
                     </div>
                     <div className="character-info">
+                        <span>{character.name}</span>
                         <span>{character.gender}</span>
                         <span>{character.location.name}</span>
                         <span>{character.origin.name}</span>
